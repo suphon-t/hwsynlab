@@ -39,7 +39,7 @@ module seven_seg_map(
                 4'h0: nums[3:0] = data[3:0];
                 4'h4: nums[7:4] = data[3:0];
                 4'h8: nums[11:8] = data[3:0];
-                4'hc: nums[15:12] = data[3:0];
+                4'hc: nums[15:12] = data[7:4];
             endcase        
         end
     end

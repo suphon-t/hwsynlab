@@ -28,21 +28,21 @@ module test_nano_sc_system(
     reg nreset;
     
     wire [15:0] nums;
-    nano_sc_system NANOSCSYSTEM(nums, 12'h321, nreset, clock);
+    nano_sc_system NANOSCSYSTEM(nums, 12'h1ef, nreset, clock);
     
     initial
     begin
         clock=0;
         nreset=0;
-        #40;
+        #4;
         nreset=1;
-        #440;
+        #200;
         $finish;
     end
     
     always
     begin : CLOCK
-        #20
+        #2
         clock=~clock;
     end
 endmodule
