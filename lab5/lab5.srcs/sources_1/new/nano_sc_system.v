@@ -18,7 +18,13 @@ reg		nreset;
 
 nanocpu	CPU(p_address,p_data,d_address,d_data,mem_wr,clock,nreset);
 rom 	PROGMEM(p_data,p_address[28:2]);
-memory 	DATAMEM(d_data,d_address[28:2],mem_wr,clock);
+
+assign mem_en = d_address[31:8] != 24'h000ff;
+memory 	DATAMEM(d_data,d_address[28:2],mem_wr,mem_en,clock);
+seven_seg_map SEVENSEGMAP(segments, d_data, d_address, mem_wr, clock);
+switch_map SWITCHMAP(d_data, d_address, 12'h321);
+
+wire [15:0] segments;
 
 initial
 begin
@@ -38,6 +44,9 @@ begin : CLOCK
 	#20
 	clock=~clock;
 end
+
+always @(d_address)
+$display("%10d - mem_addr %h, mem_en: %b\n",$time,d_address,mem_en);
 
 
 endmodule
