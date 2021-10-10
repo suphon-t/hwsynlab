@@ -29,7 +29,7 @@ begin
 	nreset=0;
 	#40;
 	nreset=1;
-	#2000;
+	#440;
 	$finish;
 end
 

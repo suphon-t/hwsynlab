@@ -18,7 +18,7 @@ reg	[DATA_WIDTH-1:0]	mem[0:1<<ADDR_WIDTH -1];
 assign data=mem[address];
 
 initial begin
-	$readmemb("prog.mem",mem);
+	$readmemb("testProg.mem",mem);
 end
 
 endmodule
