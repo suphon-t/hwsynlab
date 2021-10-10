@@ -28,7 +28,7 @@ output reg sel_data;
 output reg reg_wr;
 output reg mem_wr;
 output reg [1:0] ext_ops;
-output reg [1:0] alu_ops;
+output reg [2:0] alu_ops;
 input [5:0] opcode;
 input z_flag;
 
@@ -127,10 +127,10 @@ end
 always @(opcode)
 begin
 	case (opcode)
-		ORI : alu_ops=2'b01;
-		ORUI : alu_ops=2'b01;
-		BEQ : alu_ops=2'b10;
-		default : alu_ops=2'b00;
+		ORI : alu_ops=3'b010;
+		ORUI : alu_ops=3'b010;
+		BEQ : alu_ops=3'b001;
+		default : alu_ops=3'b000;
 	endcase
 end
 
