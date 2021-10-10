@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/10/2021 04:46:52 PM
+// Create Date: 10/05/2021 03:16:01 PM
 // Design Name: 
-// Module Name: seven_seg_map
+// Module Name: clockScaler
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,27 +20,25 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module seven_seg_map(
-    output [15:0] nums,
-    input [31:0] data,
-    input [31:0] addr,
-    input wr,
+module clockScaler(
+    output scaledClock,
     input clock
     );
     
-    reg [15:0] nums = 0;
-    assign en = addr[31:4] == 28'h0000fff;
+    parameter PERIOD = 16;
+    localparam HALF = PERIOD / 2;
+    localparam BITS = $clog2(HALF);
+    
+    reg [BITS-1:0] counter = 0;
+    reg scaledClock = 0;
     
     always @(posedge clock)
     begin
-        if (en && wr)
+        if (counter == HALF - 1)
         begin
-            case (addr[3:0])
-                4'h0: nums[3:0] = data[3:0];
-                4'h4: nums[7:4] = data[3:0];
-                4'h8: nums[11:8] = data[3:0];
-                4'hc: nums[15:12] = data[3:0];
-            endcase        
+            scaledClock = ~scaledClock;
+            counter = 0;
         end
+        else counter = counter + 1;
     end
 endmodule
