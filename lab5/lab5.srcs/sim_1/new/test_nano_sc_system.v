@@ -28,7 +28,8 @@ module test_nano_sc_system(
     reg nreset;
     
     wire [15:0] nums;
-    nano_sc_system NANOSCSYSTEM(nums, 12'h1ef, nreset, clock);
+    reg [11:0] sw;
+    nano_sc_system NANOSCSYSTEM(nums, sw, nreset, clock);
     
     initial
     begin
@@ -36,7 +37,15 @@ module test_nano_sc_system(
         nreset=0;
         #4;
         nreset=1;
-        #200;
+        sw = 12'h123;
+        
+        #96;
+        sw = 12'h456;
+        
+        #100;
+        sw = 12'h789;
+        
+        #100;
         $finish;
     end
     
