@@ -72,7 +72,7 @@ wire	sel_data;
 wire	sel_b;
 wire	z_new;
 wire	c_new;
-wire	[2:0]	alu_ops;
+wire	[3:0]	alu_ops;
 
 wire	[31:0]	A;
 wire	[31:0]	B;

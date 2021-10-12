@@ -29,11 +29,13 @@
 
   JMP   {addr: pcaddr} => 0b110000 @ addr`26
 
-  ADD   {rd: register}, {rs: register}, {rt: register} => 0b000001 @ rs @ rt @ rd @ 0b000`11
-  SUB   {rd: register}, {rs: register}, {rt: register} => 0b000001 @ rs @ rt @ rd @ 0b001`11
-  OR    {rd: register}, {rs: register}, {rt: register} => 0b000001 @ rs @ rt @ rd @ 0b010`11
-  AND   {rd: register}, {rs: register}, {rt: register} => 0b000001 @ rs @ rt @ rd @ 0b011`11
-  XOR   {rd: register}, {rs: register}, {rt: register} => 0b000001 @ rs @ rt @ rd @ 0b100`11
-  COM   {rd: register}, {rs: register} => 0b000001 @ rs @ 0`5 @ rd @ 0b101`11
-  NOT   {rd: register}, {rs: register} => 0b000001 @ rs @ 0`5 @ rd @ 0b110`11
+  ADD   {rd: register}, {rs: register}, {rt: register}  => 0b000001 @ rs @ rt   @ rd @ 0b0000`11
+  SUB   {rd: register}, {rs: register}, {rt: register}  => 0b000001 @ rs @ rt   @ rd @ 0b0001`11
+  OR    {rd: register}, {rs: register}, {rt: register}  => 0b000001 @ rs @ rt   @ rd @ 0b0010`11
+  AND   {rd: register}, {rs: register}, {rt: register}  => 0b000001 @ rs @ rt   @ rd @ 0b0011`11
+  XOR   {rd: register}, {rs: register}, {rt: register}  => 0b000001 @ rs @ rt   @ rd @ 0b0100`11
+  COM   {rd: register}, {rs: register}                  => 0b000001 @ rs @ 0`5  @ rd @ 0b0101`11
+  NOT   {rd: register}, {rs: register}                  => 0b000001 @ rs @ 0`5  @ rd @ 0b0110`11
+  SHL4   {rd: register}, {rs: register}                 => 0b000001 @ rs @ 0`5  @ rd @ 0b1000`11
+  SHR4   {rd: register}, {rs: register}                 => 0b000001 @ rs @ 0`5  @ rd @ 0b1001`11
 }

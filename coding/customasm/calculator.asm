@@ -77,5 +77,6 @@ display:
   SW r3, 0xf4(r10)
   ; store S into segment 2 and 3
   SW r5, 0xf8(r10)
+  SHR4 r5, r5
   SW r5, 0xfc(r10)
   JMP loop

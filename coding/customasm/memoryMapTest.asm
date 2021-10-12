@@ -16,7 +16,8 @@ main:
   LW r2, 0xe8(r1)
   SW r2, 0xf8(r1)
 
-  ORI r2, r0, 0x4
+  ORI r2, r0, 0x54
+  SHR4 r2, r2
   SW r2, 0xfc(r1)
 
   JMP main
